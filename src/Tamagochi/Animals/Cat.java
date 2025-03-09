@@ -4,21 +4,23 @@ import Tamagochi.Tamagotchi;
 
 public class Cat extends Tamagotchi {
 
-    private int lives = 9;
+    private final String animalType;
 
-    public Cat(String name, int age, String gender, double mood, double energy, int lives) {
-        super(name, age, gender, mood, energy);
-        this.lives = lives;
+    public Cat(String animalType, String name, int age, String gender, int mood, int energy, int hunger) {
+        super(name, age, gender, mood, energy, hunger);
+        this.animalType = animalType;
     }
 
-    public int getLives() {
-        return lives;
+    public String getAnimalType() {
+        return animalType;
     }
 
     @Override
-    public void play() {
-        if (getMood() < 0.5) {
-            System.out.println("Cat is unhappy and doesn't want to play");
+    public void play() throws InterruptedException {
+        if (getMood() < 50) {
+            System.out.println(getName() + " is unhappy and doesn't want to play");
+        } else {
+            super.play();
         }
     }
 }
